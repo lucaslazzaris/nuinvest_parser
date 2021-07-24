@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block content %}
+
+<ul class="js-flash flashes hidden">
+  <li class="success">Sucesso</li>
+</ul>
+
+<h1>Leitor de notas de corretagem da Easynvest</h1>
+<form id='files-form' enctype="multipart/form-data" action="/processar_nota" method="post">
+  <label for="files">Selecione os arquivos</label>
+  <p>
+    <input type="file" id="files" name="files[]" accept=".pdf" multiple />
+  </p>
+  <div>
+    <input type="submit" value="Enviar" />
+  </div>
+</form>
+
+<div class='hidden'>
+  <div class='stocks-content'></div>
+</div>
+
+{% endblock %}
