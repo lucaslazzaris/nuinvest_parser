@@ -14,7 +14,6 @@ $(document).ready(() => {
       processData: false,
       contentType: false,
       success: function(data){
-        console.log(data);
         if (data.redirect_url) {
           window.location.href = data.redirect_url;
         } else {
@@ -24,13 +23,15 @@ $(document).ready(() => {
             stock_data += '<br/>';
           }
           $('.stocks-content').html(stock_data);
-          $('.js-flash').removeClass('hidden')
-          $('.stocks-content').removeClass('hidden')
+          $('.stocks-content').removeClass('hidden');
+
+          if (data.template) {
+           $('.alert').remove();
+           $(data.template).insertBefore('#content');
+          }
         }
       },
       error: function(data){
-        console.log(data);
-
         window.location.href = data.responseJSON.redirect_url
       }
     });

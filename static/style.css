@@ -4,7 +4,6 @@ html {
 }
 
 body {
-  max-width: 960px;
   margin: 0 auto;
   background: white;
 }
@@ -12,7 +11,6 @@ body {
 .hidden {
   display: none;
 }
-
 
 h1 {
   padding: 1rem 0;
