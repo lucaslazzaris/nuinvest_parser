@@ -49,3 +49,7 @@ def create_app(test_config=None):
     return render_template('about.html')
   
   return app
+
+if __name__ == '__main__':
+    app = create_app()
+    app.run()
