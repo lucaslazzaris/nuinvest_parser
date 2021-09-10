@@ -1,4 +1,4 @@
-from pdb import set_trace
+import os
 from flask import Flask, render_template, request, flash, url_for
 from parser.note_parser import NoteParser
 
@@ -52,4 +52,5 @@ def create_app(test_config=None):
 
 if __name__ == '__main__':
     app = create_app()
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
