@@ -49,3 +49,5 @@ def create_app(test_config=None):
     return render_template('about.html')
   
   return app
+
+app = create_app()
