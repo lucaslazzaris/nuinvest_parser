@@ -1,0 +1,17 @@
+html {
+  font-family: sans-serif;
+  background: white;
+}
+
+body {
+  margin: 0 auto;
+  background: white;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  padding: 1rem 0;
+}

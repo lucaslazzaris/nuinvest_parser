@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template, request, flash, url_for
+from flask import Flask, render_template, send_from_directory, request, flash, url_for
+from flask_cors import CORS #comment this on deployment
 from parser.note_parser import NoteParser
 
 ALLOWED_EXTENSIONS = {'pdf'}
@@ -9,10 +10,11 @@ def allowed_file(filename):
          filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def create_app(test_config=None):
-  app = Flask(__name__)
+  app = Flask(__name__, static_url_path='', static_folder='frontend/build')
   # I know I should hide this info,but I'll use it just to let the flash message works
   app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
   app.config['MAX_CONTENT_LENGTH'] = 50 * 1000 * 1000
+  CORS(app) #comment this on deployment
 
   if test_config is None:
     pass
@@ -20,9 +22,9 @@ def create_app(test_config=None):
   else:
     app.config.update(test_config)
 
-  @app.route('/')
-  def index():
-    return render_template('index.html')
+  @app.route("/", defaults={'path':''})
+  def serve(path):
+      return send_from_directory(app.static_folder,'index.html')
 
   @app.route('/processar_nota', methods=['POST'])
   def process_note():
