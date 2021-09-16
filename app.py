@@ -33,22 +33,25 @@ def create_app(test_config=None):
       note_info = []
       for file in files:
         if file.filename == '' or not allowed_file(file.filename):
-          flash('Inserir documentos no formato .pdf', 'danger')
-          return { 'redirect_url': url_for('index')}, 422
+          return { 
+            'redirect_url': url_for('serve'),
+            'flash_message': {
+              'content': 'Inserir documentos no formato .pdf',
+              'class': 'danger'
+            }
+          }, 422
 
         note_parser = NoteParser(file)
         note_info.extend(note_parser.get_note_info())
         note_parser.close_file()
-      flash('Sucesso', 'success')
-      return {'stocks': note_info, 'template': render_template('flash_message.html')}
-    else:
-      flash('Inserir documentos no formato .pdf', 'danger')
-    
-    return { 'redirect_url': url_for('index') }, 422
-
-  @app.route('/sobre')
-  def about():
-    return render_template('about.html')
+      return {'stocks': note_info, 'flash_message': {'content': 'Sucesso', 'class': 'success'}}
+    return { 
+      'redirect_url': url_for('serve'),
+      'flash_message': {
+        'content': 'Inserir documentos no formato .pdf',
+        'class': 'danger'
+      }
+    }, 422
   
   return app
 
