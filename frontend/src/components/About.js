@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function About() {
   return (
-    <div class="p-5 mt-3 mb-3 bg-light rounded-3">
-      <h1 class="text-center">Leitor de notas de corretagem da Nu Invest</h1>
-        <div class="row justify-content-center">
-          <div class="col text-left">
+    <div className="p-5 mt-3 mb-3 bg-light rounded-3">
+      <h1 className="text-center">Leitor de notas de corretagem da Nu Invest</h1>
+        <div className="row justify-content-center">
+          <div className="col text-left">
             <p>Esse projeto tem como objetivo facilitar a gestão financeira de investimentos pessoais. Em vez de transcrever
               todas as ações compradas e vendidas de uma nota de corretagem, com este leitor, é possível apenas copiar e
               colar em alguma planilha eletrônica. Atualmente o leitor funciona apenas com dados da corretora Nu Invest
