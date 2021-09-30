@@ -14,6 +14,7 @@ def create_app():
   app.config['MAX_CONTENT_LENGTH'] = 50 * 1000 * 1000
 
   @app.route("/", defaults={'path':''})
+  @app.errorhandler(404)
   def serve(path):
       return send_from_directory(app.static_folder,'index.html')
 
