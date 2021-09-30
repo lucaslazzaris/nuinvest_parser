@@ -9,7 +9,7 @@ from parser.easynvesting_parser import EasynvestingParser
 
 @pytest.fixture
 def client():
-  app = create_app({'TESTING': True})
+  app = create_app()
 
   with app.test_client() as client:
       yield client

@@ -3,11 +3,6 @@ from werkzeug.datastructures import FileStorage
 from app import create_app
 
 class TestApp():
-  def test_empty_test_config(self):
-    app = create_app()
-    response_class = app.test_client().get('/')
-    assert response_class.status_code == 200
-
   def test_Home(self, client):
     response_class = client.get('/')
     
