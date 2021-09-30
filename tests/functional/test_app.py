@@ -11,7 +11,6 @@ class TestApp():
   def test_Home(self, client):
     response_class = client.get('/')
     
-    assert b"Selecione os arquivos" in response_class.data
     assert response_class.status_code == 200
 
   def test_process_note(self, client, easynvesting_file):
@@ -31,10 +30,13 @@ class TestApp():
         4,
         259.66,
         1038.94,
-        'Easynvesting',
+        'Nu invest',
         '384268'
     ]] == response_json['stocks']
-    assert "Sucesso" in response_json['template']
+    assert {
+      'content': 'Sucesso',
+      'class': 'success'
+    } == response_json['flash_message']
 
   def test_no_filename(self, client):
     file_path = os.path.join('tests/assets/Invoice_384268.pdf')
@@ -55,7 +57,12 @@ class TestApp():
 
     response_json = response_class.get_json()
 
-    assert  {'redirect_url': '/' } == response_json
+    assert {
+      'content': 'Inserir documentos no formato .pdf',
+      'class': 'danger'
+    } == response_json['flash_message']
+    assert  '/' == response_json['redirect_url']
+    assert 422 == response_class.status_code
 
   def test_no_pdf(self, client, empty_file):
     data = {'files[]': [empty_file]}
@@ -68,17 +75,9 @@ class TestApp():
 
     response_json = response_class.get_json()
 
-    with client.session_transaction() as session:
-      flash_message = dict(session['_flashes']).get('danger')
-
-    assert 'Inserir documentos no formato .pdf' == flash_message
-    assert  {'redirect_url': '/' } == response_json
+    assert {
+      'content': 'Inserir documentos no formato .pdf',
+      'class': 'danger'
+    } == response_json['flash_message']
+    assert  '/' == response_json['redirect_url']
     assert 422 == response_class.status_code
-
-
-  def test_about(self, client):
-    response_class = client.get('/sobre')
-
-    assert b"Esse projeto tem como objetivo facilitar a" in response_class.data
-    assert response_class.status_code == 200
-

@@ -4,12 +4,10 @@ import { useCallback } from 'react'
 export default function StockContent({stockData}) {
   const renderStocks = useCallback(
     () => {
-      let i = 0;
       return stockData.map((stock) => {
-        i++;
         return (
-          <div key={i}>
-            {stock.join(';').replaceAll('.', ',')}
+          <div key={`${stock[1]}${stock[2]}`}>
+            {stock.join(';').replace('/./g', ',')}
           </div>
         )
       })
@@ -22,7 +20,7 @@ export default function StockContent({stockData}) {
   }
 
   return (
-    <div className="stocks-content">
+    <div className="stocks-content" data-test-id="stocks-row">
       {renderStocks()}
     </div>
   )

@@ -13,7 +13,7 @@ class TestNoteParser:
         4,
         259.66,
         1038.94,
-        'Easynvesting',
+        'Nu invest',
         '384268'
       ]
     ] == note_info

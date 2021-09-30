@@ -9,7 +9,6 @@ function Home({emitFlashMessage}) {
   const [stockData, setStockData] = useState(null);
   const onSubmit = useCallback((event) => {
     event.preventDefault();
-
     const formData = new FormData(document.getElementById('files-form'));
     axios
       .post('processar_nota', formData, {
@@ -44,6 +43,7 @@ function Home({emitFlashMessage}) {
           action="/processar_nota"
           method="post"
           onSubmit={onSubmit}
+          data-test-id="file-form"
         >
           <div className="row justify-content-center">
             <div className="col text-center">

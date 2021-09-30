@@ -7,6 +7,7 @@ function FlashMessage({ message, showFlashMessage, hideFlashMessage }) {
       <ul
         className={`alert-${message.class} alert alert-dismissible fade show text-center`}
         role="alert"
+        data-test-id="flash-message"
       >
         <div>
           {message.content}
