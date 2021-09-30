@@ -5,7 +5,7 @@ export default function TopBar() {
   return (
     <nav className="navbar navbar-light bg-light">
     <div className="container">
-      <a href='/' className="navbar-brand">Home</a>
+      <Link className="navbar-brand" to="/">Home</Link>
       <div className="d-flex">
         <ul className="navbar-nav">
           <li className="nav-item">
