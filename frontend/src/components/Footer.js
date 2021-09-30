@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="footer mt-auto py-3 bg-light">
       <div className="container">
         <div className="text-muted">
-          Essa página é meramente informativa e nos responsabilizamos pelo uso
+          Essa página é meramente informativa e não nos responsabilizamos pelo uso
           dos dados aqui mostrados.
         </div>
         <div className="text-muted">
