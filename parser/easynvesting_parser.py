@@ -2,7 +2,7 @@ import re
 from .base_parser import BaseParser
 
 class EasynvestingParser(BaseParser):
-  broker = 'Easynvesting'
+  broker = 'Nu invest'
 
   def get_data(self, text_content):
     number_regex = '[\d\.]+,*[\d]*'
