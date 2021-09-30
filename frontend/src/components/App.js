@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Home from './Home';
 import About from './About';
 import FlashMessage from './FlashMessage';
+import NotFound from './NotFound';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/sobre" exact component={About} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </main>
       </Router>
