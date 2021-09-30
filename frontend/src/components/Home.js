@@ -11,7 +11,7 @@ function Home({emitFlashMessage}) {
     event.preventDefault();
     const formData = new FormData(document.getElementById('files-form'));
     axios
-      .post('processar_nota', formData, {
+      .post('https://nu-invest-parser.herokuapp.com/processar_nota', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
