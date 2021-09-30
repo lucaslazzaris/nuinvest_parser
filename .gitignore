@@ -10,6 +10,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+node_modules/
 bin/
 build/
 develop-eggs/
