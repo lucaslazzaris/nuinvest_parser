@@ -7,7 +7,7 @@ export default function StockContent({stockData}) {
       return stockData.map((stock) => {
         return (
           <div key={`${stock[1]}${stock[2]}`}>
-            {stock.join(';').replace('/./g', ',')}
+            {stock.join(';').replace(/\./g, ',')}
           </div>
         )
       })
