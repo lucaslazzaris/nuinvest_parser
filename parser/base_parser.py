@@ -17,14 +17,14 @@ class BaseParser:
           'total_cost_before_tax': float(raw_stock[5].replace('.', '').replace(',', '.'))
       }
 
-  def create_stock_with_taxes(self, stocks, *taxes):
+  def create_stock_with_taxes(self, stocks, brokerage, *taxes):
       total_taxes = sum([abs(float(tax.replace(',', '.'))) for tax in itertools.chain(*taxes)])
       total_stocks = sum([stock['total_cost_before_tax'] for stock in stocks])
       for stock in stocks:
           if stock['operation'].lower().startswith('c'):
-            stock['total_cost_after_tax'] = round(stock['total_cost_before_tax'] * (1 + total_taxes / total_stocks ), 2)
+            stock['total_cost_after_tax'] = round(stock['total_cost_before_tax'] * (1 + total_taxes / total_stocks ), 2) + brokerage
           else:
-            stock['total_cost_after_tax'] = round(stock['total_cost_before_tax'] * (1 - total_taxes / total_stocks ), 2)
+            stock['total_cost_after_tax'] = round(stock['total_cost_before_tax'] * (1 - total_taxes / total_stocks ), 2) - brokerage
       return stocks
 
   def create_stock_lines(self, stocks_with_taxes, date, broker, doc_no):

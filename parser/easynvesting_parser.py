@@ -11,4 +11,4 @@ class EasynvestingParser(BaseParser):
     cblc_taxes = re.search(r"\nTaxa de Liquidação\n-*(\d+,\d+)\nTaxa de Registro\n-*(\d+,\d+)\n", text_content).groups()
     b3_taxes = re.search(r"Total Bolsa\n-*(\d+,\d+)\n", text_content).groups()
     document_number = re.search(r"Número da nota\n(\d+)\n", text_content).group(1)
-    return raw_stocks, date, cblc_taxes, b3_taxes, document_number
+    return raw_stocks, date, cblc_taxes, b3_taxes, 0, document_number

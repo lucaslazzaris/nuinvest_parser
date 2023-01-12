@@ -26,11 +26,11 @@ class TestBaseParser:
     assert stocks['total_cost_before_tax'] == 603.47
 
   def test_create_stock_with_taxes(self, base_parser, stocks):
-    stocks = base_parser.create_stock_with_taxes(stocks, b3_taxes(), cblc_taxes())
+    stocks = base_parser.create_stock_with_taxes(stocks, 5.0, b3_taxes(), cblc_taxes())
 
-    assert stocks[0]['total_cost_after_tax'] == 603.53
-    assert stocks[1]['total_cost_after_tax'] == 3460.78
-    assert stocks[2]['total_cost_after_tax'] == 4824.45
+    assert stocks[0]['total_cost_after_tax'] == 608.53
+    assert stocks[1]['total_cost_after_tax'] == 3455.78
+    assert stocks[2]['total_cost_after_tax'] == 4829.45
 
   def test_create_stock_lines(self, base_parser, stocks_with_taxes):
     formated_data = base_parser.create_stock_lines(

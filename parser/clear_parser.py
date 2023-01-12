@@ -13,4 +13,4 @@ class ClearParser(BaseParser):
     b3_taxes = b3_taxes_regex.groups() if b3_taxes_regex else ['0']
     document_number_regex = re.search(r"Nr\. nota\n(\d+)\n", text_content)
     document_number = document_number_regex.group(1) if document_number_regex else 0
-    return raw_stocks, date, cblc_taxes, b3_taxes, document_number
+    return raw_stocks, date, cblc_taxes, b3_taxes, 0, document_number

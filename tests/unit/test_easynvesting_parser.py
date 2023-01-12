@@ -11,6 +11,7 @@ class TestEasynvestingParser():
       '03/08/2021',
       ('0,10', '0,00'),
       ('0,02',),
+      0,
       '38173'
     ) == stocks_data
 
